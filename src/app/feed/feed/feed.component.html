@@ -1,0 +1,53 @@
+
+  
+
+  <div class="container">
+    <div class="sidebar">
+        <p>Рекомендуемые каналы</p>
+        <ul>
+            <li><img src="../assets/user.svg" alt=""> %username%</li>
+            <li><img src="../assets/user.svg" alt=""> %username%</li>
+            <li><img src="../assets/user.svg" alt=""> %username%</li>
+        </ul>
+        <p>Интересное</p>
+        <ul class="actual-list">
+            <li>#hashtag</li>
+            <li>#hashtag</li>
+            <li>#hashtag</li>
+            <li>#hashtag</li>
+            <li>#hashtag</li>
+            <li>#hashtag</li>
+            <li>#hashtag</li>
+        </ul>
+        <button class="logout-btn" (click)="logout()">Выйти</button>
+    </div>
+    <div class="content">
+       <div *ngIf="mediaList$ | async as posts" class="media-list">
+            <div *ngFor="let post of posts" class="media-item">
+                
+              <div class="post">
+                <div class="post-header">
+                  <img class="avatar" [src]="post.author.user_avatar_url" alt="Avatar">
+                  <span class="username">{{ post.author.user_name }}</span>
+                </div>
+                <div class="post-body">
+                  <p class="description">{{ post.media_description }}</p>
+                  <video class="thumbnail" [src]="post.media_url" controls></video>
+                </div>
+                <div class="post-footer">
+                  <div class="likes">
+                    <img src="../assets/visibility.svg" alt="">
+                    <span class="count">{{ post.counters.likes  | shortNumber}}</span>
+                  </div>
+                  <div class="views">
+                    <img src="../assets/favorite.svg" alt="">
+                    <span class="count">{{ post.counters.views | shortNumber}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </div>
+  </div>
+  

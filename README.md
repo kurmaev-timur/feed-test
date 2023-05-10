@@ -1,27 +1,23 @@
-# Feed
+# Задание
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
+Необходимо написать простое WEB приложение на angular, которое выводит список постов.
+Дизайн не предусмотрен и дается на откуп разработчику
 
-## Development server
+Обязательный условия:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Для отображения ленты исполльзовать маршрут /feed
+- Модульность и Lazy Loading
+- NGRX и все его прелести
+- Для работы с сетевыми запросами и ошибками использовать Interceptor
+- При запросе ленты требуется заголовок Authoriztion: Bearer ${access_token}.
+- Сохранение токенов после обновления страницы
 
-## Code scaffolding
+# Описание
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Я сделал веб приложение с двумя роутами /login и /feed
+- При клике на кнопку в /login происходит "авторизация" и токен помещается в LocalStorage
+- К каждому запросу с помощью интерцептора добавляется токен в заголовок.
+- Также, с помощью интерцептора error-handler производится проверка ошибок
+- Все модули подключены как Lazy Loading
+- Прелести NGRX подключены
+- Для отображения количества просмотров и лайков написал пайп, который переводит число в удобочитаемый вид

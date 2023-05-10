@@ -1,10 +1,25 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'login',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    canLoad: [AuthGuard],
+  },
+  {
+    path: 'feed',
+    loadChildren: () => import('./feed/feed.module').then((m) => m.FeedModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'login',
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
